@@ -1,0 +1,44 @@
+.wrapper-node {
+  padding: 4px;
+  background-color: #f3e5f5;
+}
+
+.wrapper-node:hover {
+  box-shadow: 1px 9px 16px -10px rgba(0, 0, 0, 0.75);
+}
+
+.header-node {
+  text-align: center;
+  padding: 6px;
+  border-bottom: 0.5px dotted #7b1fa2;
+  background-color: #7b1fa2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-node svg {
+  cursor: pointer;
+  background-color: #ce93d8;
+  border-radius: 50%;
+  padding: 1px;
+}
+
+.header-node span {
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: white;
+}
+
+.form-node {
+  padding: 6px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  flex-direction: column;
+  gap: 10px;
+}

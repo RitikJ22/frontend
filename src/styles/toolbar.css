@@ -1,0 +1,38 @@
+.toolbarComponet {
+  margin: 20px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: #ede7f6;
+}
+
+.toolbarWrapper {
+  padding: 10px;
+  background-color: #d1c4e9;
+}
+
+.buttonStyle{
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  position: relative;
+  border: 2px solid #7b1fa2;
+  padding: 9px 50px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  font-weight: 800;
+  font-size: 0.8em;
+  transition: background-color 0.3s ease, cursor 0.3s ease;
+  text-align: center;
+  color: #6a1b9a;
+}
+
+.fill {
+  cursor: grab;
+}
+
+.buttonStyle:hover,.fill:hover {
+  background-color: #e1bee7;
+}

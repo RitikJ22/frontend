@@ -1,0 +1,16 @@
+.submitWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3e5f5;
+}
+
+.typoStyles{
+    margin-top: 1px;
+    color: #6a1b9a;
+}
+
+.spanStyles{
+    font-weight: 700;
+    color: #8e24aa;
+}
