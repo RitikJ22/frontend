@@ -1,13 +1,11 @@
-// submit.js
 import * as React from "react";
 import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 import "./styles/submit.css";
-
 
 const selector = (state) => ({
   nodes: state.nodes,
@@ -30,6 +28,9 @@ export const SubmitButton = () => {
   const { nodes, edges } = useStore(selector, shallow);
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState({});
+  const [success, setSuccess] = React.useState(false);
+  const [error, setError] = React.useState("");
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -56,15 +57,22 @@ export const SubmitButton = () => {
         }
 
         const responseData = await response.json();
-        setData(responseData?.data)
+        setData(responseData?.data);
+        setSuccess(true);
+        setError("");
 
         handleOpen();
       } catch (error) {
         console.error("There has been a problem with fetch operation:", error);
+        setSuccess(false);
+        setError(
+          "There has been a problem with fetch operation: " + error.message
+        );
+        handleOpen();
       }
       return;
     }
-    return alert("Data is empty!");
+    alert("Data is empty!");
   };
 
   return (
@@ -96,24 +104,36 @@ export const SubmitButton = () => {
             id="modal-modal-title"
             variant="h6"
             component="h2"
-            sx={{ fontWeight: "900",textAlign:"center" }}
+            sx={{ fontWeight: "900", textAlign: "center" }}
           >
             Information regarding Pipeline
           </Typography>
           <Box id="modal-modal-description" sx={{ mt: 2 }}>
-            <Typography  className="typoStyles">
-              Number of Nodes: <span className="spanStyles">{data?.num_nodes || 0}</span>
-            </Typography>
-            <Typography  className="typoStyles">
-              Number of Edges: <span className="spanStyles">{data?.num_edges || 0}</span>
-            </Typography>
-            {
-              data?.is_dag && (
-                <Alert  className="typoStyles" severity="info">This is a <span className="spanStyles">directed acyclic
-                graph (DAG).</span> </Alert>
-              )
-            }
-           
+            {success ? (
+              <>
+                <Typography className="typoStyles">
+                  Number of Nodes:{" "}
+                  <span className="spanStyles">{data?.num_nodes || 0}</span>
+                </Typography>
+                <Typography className="typoStyles">
+                  Number of Edges:{" "}
+                  <span className="spanStyles">{data?.num_edges || 0}</span>
+                </Typography>
+                {data?.is_dag && (
+                  <Alert className="typoStyles" severity="info">
+                    This is a{" "}
+                    <span className="spanStyles">
+                      directed acyclic graph (DAG).
+                    </span>
+                  </Alert>
+                )}
+                <Alert severity="success" sx={{ mt: 2 }}>
+                  Data submitted successfully!
+                </Alert>
+              </>
+            ) : (
+              <Alert severity="error">{error}</Alert>
+            )}
           </Box>
         </Box>
       </Modal>

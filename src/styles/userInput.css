@@ -3,9 +3,9 @@
   border: 0;
   padding: 4px 10px;
   background: transparent;
-  border-bottom: 1px solid #8e24aa;
+  border-bottom: 1px solid #8e58b8;
   font-weight: 600;
-  color: #6a1b9a;
+  color: #8e58b8;
 }
 
 .textarea-Style {
@@ -13,5 +13,5 @@
   overflow: hidden;
   height: 100%;
   background-color: #f3e5f5;
-  color: #6a1b9a;
+  color: black;
 }

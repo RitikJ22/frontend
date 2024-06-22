@@ -6,7 +6,7 @@
   margin: 0;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   text-decoration: none;
-  color: #6a1b9a;
+  color: #8e58b8;
 }
 
 html, body{
@@ -14,6 +14,6 @@ html, body{
 }
 
 .react-flow__node{
-  border: 1.5px solid #7b1fa2;
+  border: 1.5px solid #8e58b8;
   background-color: #ede7f6;
 }
